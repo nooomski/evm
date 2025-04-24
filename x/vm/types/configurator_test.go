@@ -12,7 +12,7 @@ import (
 
 func TestEVMConfigurator(t *testing.T) {
 	evmConfigurator := types.NewEVMConfigurator().
-		WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals))
+		WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID])
 	err := evmConfigurator.Configure()
 	require.NoError(t, err)
 
@@ -35,7 +35,7 @@ func TestExtendedEips(t *testing.T) {
 					"ethereum_3855": func(_ *vm.JumpTable) {},
 				}
 				ec := types.NewEVMConfigurator().
-					WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals)).
+					WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID]).
 					WithExtendedEips(extendedEIPs)
 				return ec
 			},
@@ -49,7 +49,7 @@ func TestExtendedEips(t *testing.T) {
 					"evmos_0": func(_ *vm.JumpTable) {},
 				}
 				ec := types.NewEVMConfigurator().
-					WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals)).
+					WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID]).
 					WithExtendedEips(extendedEIPs)
 				return ec
 			},
@@ -86,7 +86,7 @@ func TestExtendedDefaultExtraEips(t *testing.T) {
 			func() *types.EVMConfigurator {
 				extendedDefaultExtraEIPs := []string{"cosmos_1_000"}
 				ec := types.NewEVMConfigurator().
-					WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals)).
+					WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID]).
 					WithExtendedDefaultExtraEIPs(extendedDefaultExtraEIPs...)
 				return ec
 			},
@@ -103,7 +103,7 @@ func TestExtendedDefaultExtraEips(t *testing.T) {
 				extendedDefaultExtraEIPs := []string{"cosmos_1000"}
 				types.DefaultExtraEIPs = append(types.DefaultExtraEIPs, "cosmos_1000")
 				ec := types.NewEVMConfigurator().
-					WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals)).
+					WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID]).
 					WithExtendedDefaultExtraEIPs(extendedDefaultExtraEIPs...)
 				return ec
 			},
@@ -119,7 +119,7 @@ func TestExtendedDefaultExtraEips(t *testing.T) {
 			func() *types.EVMConfigurator {
 				var extendedDefaultExtraEIPs []string
 				ec := types.NewEVMConfigurator().
-					WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals)).
+					WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID]).
 					WithExtendedDefaultExtraEIPs(extendedDefaultExtraEIPs...)
 				return ec
 			},
@@ -134,7 +134,7 @@ func TestExtendedDefaultExtraEips(t *testing.T) {
 			func() *types.EVMConfigurator {
 				extendedDefaultExtraEIPs := []string{"os_1001"}
 				ec := types.NewEVMConfigurator().
-					WithEVMCoinInfo(testconstants.ExampleAttoDenom, uint8(types.EighteenDecimals)).
+					WithEVMCoinInfo(testconstants.ExampleChainCoinInfo[testconstants.ExampleChainID]).
 					WithExtendedDefaultExtraEIPs(extendedDefaultExtraEIPs...)
 				return ec
 			},
